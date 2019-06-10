@@ -1,7 +1,7 @@
 # Euclid
 
 #### Description
-基于微服务架构的数据可视化系统
+A big data visualization platform based on Spring cloud microservices architecture.
 
 #### Software Architecture
 Software architecture description
