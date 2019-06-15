@@ -12,6 +12,7 @@ class Constants {
     static final String CREATING_TEST_ENTITY = "> Creating test entity: {}";
     static final String DEL_TEST_ENTITY = "> Deleting test entity via uuid:{}";
     static final String UPDATING_TEST_ENTITY = "> Updating test entity uuid:{}";
+    static final String PAGING_BY_CONDITION = "> Paging test entity by condition:{}";
     static final String TEST_ENTITY_EXISTS = "存在同名的测试实体类，新增失败！";
     static final String TEST_ENTITY_NOT_EXISTS = "测试实体类不存在，更新失败！";
 }
