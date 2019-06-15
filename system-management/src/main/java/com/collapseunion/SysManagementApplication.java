@@ -5,15 +5,17 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 /**
  * 系统管理微服务
  *
  * @author CloudSen
  */
-@SpringBootApplication
-@EnableEurekaClient
 @Slf4j
+@EnableEurekaClient
+@EnableSpringDataWebSupport
+@SpringBootApplication
 public class SysManagementApplication {
     static {
         log.info("======> [ INFO ] Starting system management server...");
