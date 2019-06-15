@@ -8,6 +8,8 @@ import com.collapseunion.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -31,7 +33,7 @@ public class TestJpaServiceImpl implements TestJpaService {
     @Override
     public TestJpaEntity findById(String uuid) {
         log.info(Constants.FINDING_BY_ID, uuid);
-        return this.testJpaRepository.getOne(uuid);
+        return this.testJpaRepository.findById(uuid).orElse(null);
     }
 
     @Override
@@ -50,16 +52,7 @@ public class TestJpaServiceImpl implements TestJpaService {
     @Override
     public List<TestJpaEntity> findByCondition(TestJpaDto condition) {
         log.info(Constants.FINDING_BY_CONDITION, condition);
-        TestJpaEntity testEntity = new TestJpaEntity()
-                .setId(condition.getId())
-                .setName(condition.getName())
-                .setCreateDate(condition.getCreateDate());
-        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
-                .withIgnoreNullValues()
-                .withMatcher("id", ExampleMatcher.GenericPropertyMatcher::contains)
-                .withMatcher("name", ExampleMatcher.GenericPropertyMatcher::contains);
-        Example<TestJpaEntity> example = Example.of(testEntity, exampleMatcher);
-        return this.testJpaRepository.findAll(example);
+        return this.testJpaRepository.findAll(this.getTestJpaExample(condition));
     }
 
     @Override
@@ -90,9 +83,35 @@ public class TestJpaServiceImpl implements TestJpaService {
             // TODO 以后添加自定义运行时异常
             throw new RuntimeException(Constants.TEST_ENTITY_NOT_EXISTS);
         }
+        log.info(Constants.UPDATING_TEST_ENTITY, oldEntity.getId());
         TestJpaEntity needUpdateEntity = oldEntity
                 .setUpdateDate(new Date())
                 .copyValueFromDto(testJpaDto);
         return this.testJpaRepository.save(needUpdateEntity);
     }
+
+    @Override
+    public Page<TestJpaEntity> pagingByCondition(TestJpaDto condition, Pageable pageable) {
+        log.info(Constants.PAGING_BY_CONDITION, condition);
+        return this.testJpaRepository.findAll(this.getTestJpaExample(condition), pageable);
+    }
+
+    /**
+     * 获取混合条件查询的example
+     *
+     * @param condition 查询条件
+     * @return example
+     */
+    private Example<TestJpaEntity> getTestJpaExample(TestJpaDto condition) {
+        TestJpaEntity testEntity = new TestJpaEntity()
+                .setId(condition.getId())
+                .setName(condition.getName())
+                .setCreateDate(condition.getCreateDate());
+        ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+                .withIgnoreNullValues()
+                .withMatcher("id", ExampleMatcher.GenericPropertyMatcher::contains)
+                .withMatcher("name", ExampleMatcher.GenericPropertyMatcher::contains);
+        return Example.of(testEntity, exampleMatcher);
+    }
+
 }

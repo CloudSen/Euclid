@@ -1,7 +1,10 @@
 package com.collapseunion.controller;
 
 import com.collapseunion.dto.TestJpaDto;
+import com.collapseunion.entity.TestJpaEntity;
 import com.collapseunion.service.TestJpaService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -26,14 +29,19 @@ public class TestJpaController {
         return this.testJpaService.findAll();
     }
 
-    @GetMapping("/{uuid}")
-    public Object findById(@PathVariable String uuid) {
-        return this.testJpaService.findById(uuid);
+    @GetMapping("/id/{uuid}")
+    public Object findById(@PathVariable("uuid") TestJpaEntity testJpaEntity) {
+        return testJpaEntity;
     }
 
-    @GetMapping("/{createDate}")
-    public Object findByCreateDate(@PathVariable Date createDate) {
+    @GetMapping("/date/{createDate}")
+    public Object findByCreateDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate) {
         return this.testJpaService.findByCreateDate(createDate);
+    }
+
+    @PostMapping("/page")
+    public Object pagingByCondition(TestJpaDto condition, Pageable pageable) {
+        return this.testJpaService.pagingByCondition(condition, pageable);
     }
 
     @PostMapping("/queries")

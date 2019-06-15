@@ -1,12 +1,14 @@
 package com.collapseunion.entity;
 
 import com.collapseunion.dto.TestJpaDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,7 +22,7 @@ import java.util.Objects;
 @Setter
 @Accessors(chain = true)
 @Table(name = "test_jpa", schema = "public", catalog = "euclid")
-public class TestJpaEntity {
+public class TestJpaEntity implements Serializable {
     private String id;
     private String name;
     private Date createDate;
@@ -40,12 +42,14 @@ public class TestJpaEntity {
 
     @Basic
     @Column(name = "create_time")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     public Date getCreateDate() {
         return createDate;
     }
 
     @Basic
     @Column(name = "update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     public Date getUpdateDate() {
         return updateDate;
     }

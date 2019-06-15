@@ -1,8 +1,10 @@
 package com.collapseunion.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-public class TestJpaDto {
+public class TestJpaDto implements Serializable {
     /**
      * 36位UUID
      */
@@ -24,5 +26,6 @@ public class TestJpaDto {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private Date createDate;
 }

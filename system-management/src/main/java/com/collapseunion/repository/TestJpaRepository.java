@@ -2,6 +2,7 @@ package com.collapseunion.repository;
 
 import com.collapseunion.entity.TestJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
  *
  * @author CloudSen
  */
-public interface TestJpaRepository extends JpaRepository<TestJpaEntity, String> {
+public interface TestJpaRepository extends JpaRepository<TestJpaEntity, String>,
+        PagingAndSortingRepository<TestJpaEntity, String> {
 
     /**
      * 查找同日期创建的实体列表
