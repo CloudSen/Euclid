@@ -3,7 +3,7 @@ CREATE TABLE public.test_jpa
     id          character(36) NOT NULL,
     name        character varying(20),
     create_date date          NOT NULL,
-    update_date date          NOT NULL,
+    update_date date,
     PRIMARY KEY (id)
 )
     WITH (
