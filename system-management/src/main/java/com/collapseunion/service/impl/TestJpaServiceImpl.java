@@ -1,5 +1,7 @@
 package com.collapseunion.service.impl;
 
+import com.collapseunion.config.exception.customexception.DataNotFoundException;
+import com.collapseunion.config.exception.customexception.DuplicateDataException;
 import com.collapseunion.dto.TestJpaDto;
 import com.collapseunion.entity.TestJpaEntity;
 import com.collapseunion.repository.TestJpaRepository;
@@ -60,8 +62,7 @@ public class TestJpaServiceImpl implements TestJpaService {
         log.info(Constants.CREATING_TEST_ENTITY, testJpaDto);
         List<TestJpaEntity> existsEntities = this.findByCondition(testJpaDto);
         if (!CollectionUtils.isEmpty(existsEntities)) {
-            // TODO 以后添加自定义运行时异常
-            throw new RuntimeException(Constants.TEST_ENTITY_EXISTS);
+            throw new DuplicateDataException(Constants.TEST_ENTITY_EXISTS);
         }
         TestJpaEntity newEntity = new TestJpaEntity()
                 .setId(UUID.randomUUID().toString())
@@ -80,8 +81,7 @@ public class TestJpaServiceImpl implements TestJpaService {
     public TestJpaEntity update(TestJpaDto testJpaDto) {
         TestJpaEntity oldEntity = this.findById(testJpaDto.getId());
         if (oldEntity == null) {
-            // TODO 以后添加自定义运行时异常
-            throw new RuntimeException(Constants.TEST_ENTITY_NOT_EXISTS);
+            throw new DataNotFoundException(Constants.TEST_ENTITY_NOT_EXISTS);
         }
         log.info(Constants.UPDATING_TEST_ENTITY, oldEntity.getId());
         TestJpaEntity needUpdateEntity = oldEntity

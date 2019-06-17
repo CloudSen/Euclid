@@ -21,7 +21,7 @@ import java.util.Objects;
 @ToString
 @Setter
 @Accessors(chain = true)
-@Table(name = "test_jpa", schema = "public", catalog = "euclid")
+@Table(name = "test_jpa", schema = "public", catalog = "euclid_system_management")
 public class TestJpaEntity implements Serializable {
     private String id;
     private String name;
@@ -41,14 +41,14 @@ public class TestJpaEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_date")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     public Date getCreateDate() {
         return createDate;
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_date")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     public Date getUpdateDate() {
         return updateDate;

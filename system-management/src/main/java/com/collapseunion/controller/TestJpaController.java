@@ -3,14 +3,19 @@ package com.collapseunion.controller;
 import com.collapseunion.dto.TestJpaDto;
 import com.collapseunion.entity.TestJpaEntity;
 import com.collapseunion.service.TestJpaService;
+import com.collapseunion.util.globalresult.Result;
+import com.collapseunion.util.globalresult.ResultUtil;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Date;
 
 /**
- * JPA测试路由
+ * <p>JPA测试路由</p>
+ * <p>这里偷一下懒， 成功返回的状态吗都是200</p>
  *
  * @author CloudSen
  */
@@ -25,40 +30,40 @@ public class TestJpaController {
     }
 
     @GetMapping("")
-    public Object findAll() {
-        return this.testJpaService.findAll();
+    public Result<Collection<TestJpaEntity>> findAll() {
+        return ResultUtil.ok(this.testJpaService.findAll());
     }
 
     @GetMapping("/id/{uuid}")
-    public Object findById(@PathVariable("uuid") TestJpaEntity testJpaEntity) {
-        return testJpaEntity;
+    public Result<TestJpaEntity> findById(@PathVariable("uuid") TestJpaEntity testJpaEntity) {
+        return ResultUtil.ok(testJpaEntity);
     }
 
     @GetMapping("/date/{createDate}")
-    public Object findByCreateDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate) {
-        return this.testJpaService.findByCreateDate(createDate);
+    public Result<Collection<TestJpaEntity>> findByCreateDate(
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate) {
+        return ResultUtil.ok(this.testJpaService.findByCreateDate(createDate));
     }
 
     @PostMapping("/page")
-    public Object pagingByCondition(TestJpaDto condition, Pageable pageable) {
-        return this.testJpaService.pagingByCondition(condition, pageable);
+    public Result<Page<TestJpaEntity>> pagingByCondition(TestJpaDto condition, Pageable pageable) {
+        return ResultUtil.ok(this.testJpaService.pagingByCondition(condition, pageable));
     }
 
     @PostMapping("/queries")
-    public Object findByCondition(@RequestBody TestJpaDto condition) {
-        return this.testJpaService.findByCondition(condition);
+    public Result<Collection<TestJpaEntity>> findByCondition(@RequestBody TestJpaDto condition) {
+        return ResultUtil.ok(this.testJpaService.findByCondition(condition));
     }
 
     @PostMapping("")
-    public Object createNew(@RequestBody TestJpaDto newTestJpaDto) {
-        return this.testJpaService.createNew(newTestJpaDto);
+    public Result<TestJpaEntity> createNew(@RequestBody TestJpaDto newTestJpaDto) {
+        return ResultUtil.ok(this.testJpaService.createNew(newTestJpaDto));
     }
 
-    @PutMapping("/{uuid}")
-    public Object deleteById(@PathVariable String uuid) {
+    @DeleteMapping("/{uuid}")
+    public Result<Boolean> deleteById(@PathVariable String uuid) {
         this.testJpaService.deleteById(uuid);
-        // TODO 后面添加全局统一返回对象
-        return true;
+        return ResultUtil.ok();
     }
 
     @PutMapping("")
