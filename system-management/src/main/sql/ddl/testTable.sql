@@ -21,8 +21,8 @@ COMMENT ON COLUMN public.test_jpa.id
 COMMENT ON COLUMN public.test_jpa.name
     IS '姓名';
 
-COMMENT ON COLUMN public.test_jpa.create_time
+COMMENT ON COLUMN public.test_jpa.create_date
     IS '创建时间';
 
-COMMENT ON COLUMN public.test_jpa.update_time
+COMMENT ON COLUMN public.test_jpa.update_date
     IS '更新时间';

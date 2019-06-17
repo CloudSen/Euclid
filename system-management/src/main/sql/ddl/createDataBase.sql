@@ -2,7 +2,7 @@
 
 -- DROP DATABASE euclid;
 
-CREATE DATABASE euclid
+CREATE DATABASE euclid_system_management
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -11,5 +11,5 @@ CREATE DATABASE euclid
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-COMMENT ON DATABASE euclid
-    IS 'euclid for dev';
+COMMENT ON DATABASE euclid_system_management
+    IS 'euclid_system_management for dev';
