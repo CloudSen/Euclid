@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: system-management
+  cloud:
+    config:
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: dev
+      fail-fast: true
+eureka:
+  instance:
+    instance-id: system-management
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
