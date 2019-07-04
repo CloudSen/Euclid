@@ -10,8 +10,8 @@ spring:
           uri: git@gitee.com:CollapseUnion/Euclid-Cloud-Config.git
           timeout: 2
           force-pull: true
+          basedir: D:\GitRepository\Euclid\configuration-center\local-clone
           search-paths: '{application}'
-          basedir: /local-clone
           passphrase: cloudsen
           default-label: master
           ignore-local-ssh-settings: true
@@ -75,7 +75,8 @@ spring:
             -----END RSA PRIVATE KEY-----
         accept-empty: false
       allow-override: false
-      fail-fast: true
+  devtools:
+    add-properties: false
 eureka:
   client:
     service-url:
