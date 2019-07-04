@@ -1,0 +1,85 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: Euclid-Cloud-Config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@gitee.com:CollapseUnion/Euclid-Cloud-Config.git
+          timeout: 2
+          force-pull: true
+          search-paths: '{application}'
+          basedir: /local-clone
+          passphrase: cloudsen
+          default-label: master
+          ignore-local-ssh-settings: true
+          host-key: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMuEoYdx6to5oxR60IWj8uoe1aI0X1fKOHWOtLqTg1tsLT1iFwXV5JmFjU46EzeMBV/6EmI1uaRI6HiEPtPtJHE=
+          host-key-algorithm: ecdsa-sha2-nistp256
+          strict-host-key-checking: false
+          private-key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            Proc-Type: 4,ENCRYPTED
+            DEK-Info: AES-128-CBC,E7BABD45893BB201DCF2DC1C74EDE40F
+
+            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
+            -----END RSA PRIVATE KEY-----
+        accept-empty: false
+      allow-override: false
+      fail-fast: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: Euclid-Cloud-Config
