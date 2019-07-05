@@ -9,6 +9,7 @@
         <module>configuration-center</module>
         <module>common-utils</module>
         <module>common-api</module>
+        <module>hystrix-dashboard</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

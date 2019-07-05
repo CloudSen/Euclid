@@ -1,0 +1,19 @@
+server:
+  port: 9999
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 9999
+spring:
+  profiles: dev
+  application:
+    name: hystrix-dashboard
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: hystrix-dashboard
+  client:
+    service-url:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
