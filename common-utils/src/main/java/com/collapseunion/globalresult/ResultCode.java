@@ -14,7 +14,8 @@ public enum ResultCode {
      * 0001 参数无效
      */
     PARAMETER_IS_INVALID("0001", "参数无效"),
-    FAILED_TO_HANDLE("0002", "处理失败");
+    FAILED_TO_HANDLE("0002", "处理失败"),
+    DATA_NOT_FOUNT("0003", "数据不存在");
 
     private String code;
     private String message;
