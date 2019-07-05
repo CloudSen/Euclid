@@ -1,6 +1,5 @@
-package com.collapseunion.config.exception.customexception;
+package com.collapseunion.customexceptions;
 
-import com.collapseunion.config.exception.ExceptionEnum;
 import lombok.ToString;
 import org.thymeleaf.util.StringUtils;
 

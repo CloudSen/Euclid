@@ -1,12 +1,12 @@
 package com.collapseunion.service.impl;
 
-import com.collapseunion.config.exception.customexception.DataNotFoundException;
-import com.collapseunion.config.exception.customexception.DuplicateDataException;
+import com.collapseunion.TimeUtil;
+import com.collapseunion.customexceptions.DataNotFoundException;
+import com.collapseunion.customexceptions.DuplicateDataException;
 import com.collapseunion.dto.TestJpaDto;
 import com.collapseunion.entity.TestJpaEntity;
 import com.collapseunion.repository.TestJpaRepository;
 import com.collapseunion.service.TestJpaService;
-import com.collapseunion.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -67,7 +67,7 @@ public class TestJpaServiceImpl implements TestJpaService {
         TestJpaEntity newEntity = new TestJpaEntity()
                 .setId(UUID.randomUUID().toString())
                 .setCreateDate(new Date())
-                .copyValueFromDto(testJpaDto);
+                .setName(testJpaDto.getName());
         return this.testJpaRepository.save(newEntity);
     }
 
@@ -86,7 +86,7 @@ public class TestJpaServiceImpl implements TestJpaService {
         log.info(Constants.UPDATING_TEST_ENTITY, oldEntity.getId());
         TestJpaEntity needUpdateEntity = oldEntity
                 .setUpdateDate(new Date())
-                .copyValueFromDto(testJpaDto);
+                .setName(testJpaDto.getName());
         return this.testJpaRepository.save(needUpdateEntity);
     }
 

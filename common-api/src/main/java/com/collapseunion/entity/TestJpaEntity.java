@@ -1,11 +1,9 @@
 package com.collapseunion.entity;
 
-import com.collapseunion.dto.TestJpaDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -72,12 +70,5 @@ public class TestJpaEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, createDate, updateDate);
-    }
-
-    public TestJpaEntity copyValueFromDto(TestJpaDto testJpaDto) {
-        if (StringUtils.isNotEmpty(testJpaDto.getName())) {
-            this.name = testJpaDto.getName();
-        }
-        return this;
     }
 }

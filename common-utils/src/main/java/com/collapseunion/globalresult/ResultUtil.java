@@ -1,6 +1,5 @@
-package com.collapseunion.util.globalresult;
+package com.collapseunion.globalresult;
 
-import com.collapseunion.config.exception.ResultCode;
 import org.springframework.http.HttpStatus;
 
 /**

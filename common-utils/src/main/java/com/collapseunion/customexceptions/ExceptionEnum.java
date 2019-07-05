@@ -1,8 +1,6 @@
-package com.collapseunion.config.exception;
+package com.collapseunion.customexceptions;
 
-import com.collapseunion.config.exception.customexception.BusinessException;
-import com.collapseunion.config.exception.customexception.EnumCodeInvalidException;
-import com.collapseunion.config.exception.customexception.ParameterInvalidException;
+import com.collapseunion.globalresult.ResultCode;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;

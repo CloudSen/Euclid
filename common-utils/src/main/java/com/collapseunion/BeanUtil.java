@@ -1,4 +1,4 @@
-package com.collapseunion.util;
+package com.collapseunion;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;

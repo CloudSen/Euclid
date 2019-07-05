@@ -1,4 +1,4 @@
-package com.collapseunion.util;
+package com.collapseunion;
 
 /**
  * 检查参数工具类 TODO 加实现

@@ -1,6 +1,6 @@
-package com.collapseunion.util.globalresult;
+package com.collapseunion.globalresult;
 
-import com.collapseunion.util.BeanUtil;
+import com.collapseunion.BeanUtil;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.core.env.Environment;

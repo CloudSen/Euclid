@@ -1,4 +1,4 @@
-package com.collapseunion.util;
+package com.collapseunion;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

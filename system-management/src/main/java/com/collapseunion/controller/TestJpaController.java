@@ -2,9 +2,9 @@ package com.collapseunion.controller;
 
 import com.collapseunion.dto.TestJpaDto;
 import com.collapseunion.entity.TestJpaEntity;
+import com.collapseunion.globalresult.Result;
+import com.collapseunion.globalresult.ResultUtil;
 import com.collapseunion.service.TestJpaService;
-import com.collapseunion.util.globalresult.Result;
-import com.collapseunion.util.globalresult.ResultUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;

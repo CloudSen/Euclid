@@ -1,6 +1,6 @@
-package com.collapseunion.config.exception;
+package com.collapseunion.globalresult;
 
-import com.collapseunion.config.exception.customexception.EnumCodeInvalidException;
+import com.collapseunion.customexceptions.EnumCodeInvalidException;
 
 import java.util.Arrays;
 
@@ -46,7 +46,7 @@ public enum ResultCode {
     public static String getMessageByCode(String code) {
         return Arrays.stream(values())
                 .filter(rc -> rc.getCode().equalsIgnoreCase(code))
-                .map(com.collapseunion.config.exception.ResultCode::getMessage)
+                .map(ResultCode::getMessage)
                 .findFirst()
                 .orElseThrow(() -> new EnumCodeInvalidException("异常代码Code:{}对应的枚举消息不存在", code));
     }
