@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
@@ -14,6 +15,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
  */
 @Slf4j
 @EnableEurekaClient
+@EnableCircuitBreaker
 @EnableSpringDataWebSupport
 @SpringBootApplication
 public class SysManagementApplication {

@@ -7,6 +7,7 @@ import com.collapseunion.dto.TestJpaDto;
 import com.collapseunion.entity.TestJpaEntity;
 import com.collapseunion.repository.TestJpaRepository;
 import com.collapseunion.service.TestJpaService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -39,10 +41,15 @@ public class TestJpaServiceImpl implements TestJpaService {
     }
 
     @Override
+    @HystrixCommand(fallbackMethod = "findByNow")
     public List<TestJpaEntity> findByCreateDate(Date createDate) {
         log.info(Constants.FINDING_BY_CREATE_DATE,
                 TimeUtil.parseDateToString(createDate, TimeUtil.YYYY_MM_DD));
-        return this.testJpaRepository.findByCreateDate(createDate);
+        List<TestJpaEntity> resultList = this.testJpaRepository.findByCreateDate(createDate);
+        if (CollectionUtils.isEmpty(resultList)) {
+            throw new DataNotFoundException(Constants.DATA_NOT_FOUND);
+        }
+        return resultList;
     }
 
     @Override
@@ -112,6 +119,22 @@ public class TestJpaServiceImpl implements TestJpaService {
                 .withMatcher("id", ExampleMatcher.GenericPropertyMatcher::contains)
                 .withMatcher("name", ExampleMatcher.GenericPropertyMatcher::contains);
         return Example.of(testEntity, exampleMatcher);
+    }
+
+    private List<TestJpaEntity> findByNow(Date createDate) {
+        log.warn(Constants.HYSTRIX_TRIGGER);
+        return Arrays.asList(
+                new TestJpaEntity()
+                        .setName("Hystrix Default Name")
+                        .setCreateDate(new Date())
+                        .setUpdateDate(new Date())
+                        .setId(UUID.randomUUID().toString()),
+                new TestJpaEntity()
+                        .setName("Hystrix Something Wrong, Please Waite...")
+                        .setCreateDate(new Date())
+                        .setUpdateDate(new Date())
+                        .setId(UUID.randomUUID().toString())
+        );
     }
 
 }

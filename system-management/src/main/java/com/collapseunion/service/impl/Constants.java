@@ -15,4 +15,6 @@ class Constants {
     static final String PAGING_BY_CONDITION = "> Paging test entity by condition:{}";
     static final String TEST_ENTITY_EXISTS = "存在同名的测试实体类，新增失败！";
     static final String TEST_ENTITY_NOT_EXISTS = "测试实体类不存在，更新失败！";
+    static final String DATA_NOT_FOUND = "数据不存在！";
+    static final String HYSTRIX_TRIGGER = "触发Hystrix...";
 }
