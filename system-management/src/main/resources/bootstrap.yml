@@ -1,6 +1,15 @@
+server:
+  port: 8700
 spring:
+  profiles:
+    active: dev
   application:
     name: system-management
+---
+server:
+  port: 8700
+spring:
+  profiles: dev
   cloud:
     config:
       discovery:
@@ -11,7 +20,67 @@ spring:
       fail-fast: true
 eureka:
   instance:
-    instance-id: system-management
+    instance-id: system-management-dev
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+---
+server:
+  port: 8701
+spring:
+  profiles: dev2
+  cloud:
+    config:
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: dev2
+      fail-fast: true
+eureka:
+  instance:
+    instance-id: system-management-dev2
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+---
+server:
+  port: 8700
+spring:
+  profiles: test
+  cloud:
+    config:
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: test
+      fail-fast: true
+eureka:
+  instance:
+    instance-id: system-management-test
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+---
+server:
+  port: 8700
+spring:
+  profiles: prod
+  cloud:
+    config:
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: prod
+      fail-fast: true
+eureka:
+  instance:
+    instance-id: system-management-prod
     prefer-ip-address: true
   client:
     serviceUrl:
