@@ -1,0 +1,67 @@
+server:
+  port: 9998
+spring:
+  application:
+    name: turbine
+  profiles:
+    active: dev
+---
+server:
+  port: 9998
+spring:
+  profiles: dev
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: dev
+eureka:
+  instance:
+    instance-id: turbine-dev
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+---
+server:
+  port: 9998
+spring:
+  profiles: test
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: test
+eureka:
+  instance:
+    instance-id: turbine-test
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+---
+server:
+  port: 9998
+spring:
+  profiles: prod
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        service-id: Euclid-Cloud-Config
+        enabled: true
+      label: master
+      profile: prod
+eureka:
+  instance:
+    instance-id: turbine-prod
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
