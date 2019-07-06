@@ -11,4 +11,4 @@ eureka:
       defaultZone: http://localhost1:8777/eureka/
 spring:
   application:
-    name: eureka-center-2
+    name: eureka-center
