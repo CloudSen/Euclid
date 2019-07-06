@@ -10,6 +10,7 @@
         <module>common-utils</module>
         <module>common-api</module>
         <module>hystrix-dashboard</module>
+        <module>turbine</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
