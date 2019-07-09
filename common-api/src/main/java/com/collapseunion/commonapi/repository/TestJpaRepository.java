@@ -1,6 +1,6 @@
-package com.collapseunion.repository;
+package com.collapseunion.commonapi.repository;
 
-import com.collapseunion.entity.TestJpaEntity;
+import com.collapseunion.commonapi.entity.TestJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

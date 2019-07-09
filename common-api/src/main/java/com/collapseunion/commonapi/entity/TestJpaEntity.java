@@ -1,4 +1,4 @@
-package com.collapseunion.entity;
+package com.collapseunion.commonapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Setter;
