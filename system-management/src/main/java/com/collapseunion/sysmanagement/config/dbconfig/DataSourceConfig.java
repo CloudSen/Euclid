@@ -1,4 +1,4 @@
-package com.collapseunion.config.dbconfig;
+package com.collapseunion.sysmanagement.config.dbconfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;

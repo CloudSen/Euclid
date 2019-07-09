@@ -1,6 +1,6 @@
-package com.collapseunion.config.dbconfig;
+package com.collapseunion.sysmanagement.config.dbconfig;
 
-import com.collapseunion.util.ThreadLocalUtil;
+import com.collapseunion.sysmanagement.util.ThreadLocalUtil;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
@@ -9,6 +9,11 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  * @author CloudSen
  */
 public class DataSourceRouting extends AbstractRoutingDataSource {
+
+    @Override
+    protected Object determineCurrentLookupKey() {
+        return ThreadLocalUtil.getDbKey();
+    }
 
     public enum DbKey {
         /**
@@ -24,11 +29,6 @@ public class DataSourceRouting extends AbstractRoutingDataSource {
          */
         PROD,
         ;
-    }
-
-    @Override
-    protected Object determineCurrentLookupKey() {
-        return ThreadLocalUtil.getDbKey();
     }
 }
 

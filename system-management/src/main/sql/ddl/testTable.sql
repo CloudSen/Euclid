@@ -1,3 +1,5 @@
+-- \c euclid_system_management
+
 CREATE TABLE public.test_jpa
 (
     id          character(36) NOT NULL,

@@ -1,4 +1,4 @@
-package com.collapseunion.config.webconfig;
+package com.collapseunion.sysmanagement.config.webconfig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

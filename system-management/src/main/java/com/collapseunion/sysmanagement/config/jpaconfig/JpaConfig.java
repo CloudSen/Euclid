@@ -1,6 +1,6 @@
-package com.collapseunion.config.jpaconfig;
+package com.collapseunion.sysmanagement.config.jpaconfig;
 
-import com.collapseunion.config.dbconfig.DataSourceConfig;
+import com.collapseunion.sysmanagement.config.dbconfig.DataSourceConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 @Slf4j
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.collapseunion.repository",
+        basePackages = "com.collapseunion.commonapi.repository",
         transactionManagerRef = "jpaTransactionManager"
 )
 @EnableTransactionManagement
@@ -46,7 +46,7 @@ public class JpaConfig {
         vendorAdapter.setGenerateDdl(false);
         factoryBean.setDataSource(dataSourceConfig.getDynamicDataSourceConfig());
         factoryBean.setJpaVendorAdapter(vendorAdapter);
-        factoryBean.setPackagesToScan("com.collapseunion.entity");
+        factoryBean.setPackagesToScan("com.collapseunion.commonapi.entity");
         return factoryBean;
     }
 

@@ -1,10 +1,10 @@
-package com.collapseunion.config.exception;
+package com.collapseunion.sysmanagement.config.exception;
 
-import com.collapseunion.customexceptions.BusinessException;
-import com.collapseunion.customexceptions.ExceptionEnum;
-import com.collapseunion.globalresult.Result;
-import com.collapseunion.globalresult.ResultCode;
-import com.collapseunion.globalresult.ResultUtil;
+import com.collapseunion.commonutils.customexceptions.BusinessException;
+import com.collapseunion.commonutils.customexceptions.ExceptionEnum;
+import com.collapseunion.commonutils.globalresult.Result;
+import com.collapseunion.commonutils.globalresult.ResultCode;
+import com.collapseunion.commonutils.globalresult.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;

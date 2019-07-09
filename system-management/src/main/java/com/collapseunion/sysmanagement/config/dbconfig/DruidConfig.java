@@ -1,4 +1,4 @@
-package com.collapseunion.config.dbconfig;
+package com.collapseunion.sysmanagement.config.dbconfig;
 
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ public class DruidConfig {
     @Scope("prototype")
     public JdkRegexpMethodPointcut druidStatPointcut() {
         JdkRegexpMethodPointcut pointcut = new JdkRegexpMethodPointcut();
-        pointcut.setPatterns("com.collapseunion.service.*");
+        pointcut.setPatterns("com.collapseunion.sysmanagement.service.*");
         return pointcut;
     }
 

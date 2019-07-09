@@ -1,6 +1,6 @@
-package com.collapseunion.util;
+package com.collapseunion.sysmanagement.util;
 
-import com.collapseunion.config.dbconfig.DataSourceRouting;
+import com.collapseunion.sysmanagement.config.dbconfig.DataSourceRouting;
 
 /**
  * 本地线程资源工具
