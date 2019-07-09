@@ -1,6 +1,6 @@
-package com.collapseunion.globalresult;
+package com.collapseunion.commonutils.globalresult;
 
-import com.collapseunion.customexceptions.EnumCodeInvalidException;
+import com.collapseunion.commonutils.customexceptions.EnumCodeInvalidException;
 
 import java.util.Arrays;
 

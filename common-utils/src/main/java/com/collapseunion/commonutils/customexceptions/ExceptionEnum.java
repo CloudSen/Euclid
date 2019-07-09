@@ -1,6 +1,6 @@
-package com.collapseunion.customexceptions;
+package com.collapseunion.commonutils.customexceptions;
 
-import com.collapseunion.globalresult.ResultCode;
+import com.collapseunion.commonutils.globalresult.ResultCode;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;

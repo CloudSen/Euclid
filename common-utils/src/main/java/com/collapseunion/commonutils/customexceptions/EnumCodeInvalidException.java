@@ -1,4 +1,4 @@
-package com.collapseunion.customexceptions;
+package com.collapseunion.commonutils.customexceptions;
 
 /**
  * 解析枚举code失败异常

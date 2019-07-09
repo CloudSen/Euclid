@@ -1,4 +1,4 @@
-package com.collapseunion.customexceptions;
+package com.collapseunion.commonutils.customexceptions;
 
 import lombok.ToString;
 import org.thymeleaf.util.StringUtils;

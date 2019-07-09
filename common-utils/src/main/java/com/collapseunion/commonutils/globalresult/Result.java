@@ -1,9 +1,7 @@
-package com.collapseunion.globalresult;
+package com.collapseunion.commonutils.globalresult;
 
-import com.collapseunion.BeanUtil;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.springframework.core.env.Environment;
 import org.thymeleaf.util.StringUtils;
 
 import java.io.Serializable;
@@ -46,39 +44,39 @@ public class Result<T> implements Serializable {
     public Result() {
     }
 
-    public Result(Boolean success, String code, String message) {
+    public Result(Boolean success, String code, String message, String provider) {
         this.success = success;
         this.code = code;
         this.message = message;
         this.timestamp = System.currentTimeMillis();
-        this.provider = BeanUtil.getBean(Environment.class).getProperty("spring.application.name");
+        this.provider = provider;
     }
 
-    public Result(Boolean success, String code, String originStr, Object... objects) {
+    public Result(Boolean success, String code, String provider, String originStr, Object... objects) {
         this.success = success;
         this.code = code;
         String template = StringUtils.replace(originStr, "{}", "%s");
         this.message = String.format(template, objects);
         this.timestamp = System.currentTimeMillis();
-        this.provider = BeanUtil.getBean(Environment.class).getProperty("spring.application.name");
+        this.provider = provider;
     }
 
-    public Result(Boolean success, T data, String code, String message) {
+    public Result(Boolean success, T data, String code, String provider, String message) {
         this.success = success;
         this.data = data;
         this.code = code;
         this.message = message;
         this.timestamp = System.currentTimeMillis();
-        this.provider = BeanUtil.getBean(Environment.class).getProperty("spring.application.name");
+        this.provider = provider;
     }
 
-    public Result(Boolean success, T data, String code, String originStr, Object... objects) {
+    public Result(Boolean success, T data, String code, String provider, String originStr, Object... objects) {
         this.success = success;
         this.data = data;
         this.code = code;
         String template = StringUtils.replace(originStr, "{}", "%s");
         this.message = String.format(template, objects);
         this.timestamp = System.currentTimeMillis();
-        this.provider = BeanUtil.getBean(Environment.class).getProperty("spring.application.name");
+        this.provider = provider;
     }
 }

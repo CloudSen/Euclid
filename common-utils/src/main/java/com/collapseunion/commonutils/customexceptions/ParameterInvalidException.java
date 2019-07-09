@@ -1,4 +1,4 @@
-package com.collapseunion.customexceptions;
+package com.collapseunion.commonutils.customexceptions;
 
 /**
  * 参数无效异常

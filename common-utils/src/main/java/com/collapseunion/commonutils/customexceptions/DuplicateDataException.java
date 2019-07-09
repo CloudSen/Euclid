@@ -1,4 +1,4 @@
-package com.collapseunion.customexceptions;
+package com.collapseunion.commonutils.customexceptions;
 
 /**
  * 重复添加数据异常

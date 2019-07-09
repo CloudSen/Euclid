@@ -1,4 +1,4 @@
-package com.collapseunion.customexceptions;
+package com.collapseunion.commonutils.customexceptions;
 
 /**
  * 数据未找到异常
