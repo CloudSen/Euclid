@@ -21,6 +21,9 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 @EnableSpringDataWebSupport
 @SpringBootApplication
 public class SysManagementApplication {
+
+    public static final String APPLICATION_NAME = "system-management";
+
     static {
         log.info("======> [ INFO ] Starting system management server...");
     }
