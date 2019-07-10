@@ -3,9 +3,9 @@ package com.collapseunion.demo.controller;
 import com.collapseunion.commonapi.entity.TestJpaEntity;
 import com.collapseunion.commonutils.globalresult.Result;
 import com.collapseunion.commonutils.globalresult.ResultUtil;
+import com.collapseunion.demo.DemoApplication;
 import com.collapseunion.demo.dto.TestJpaDto;
 import com.collapseunion.demo.service.TestJpaService;
-import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,53 +24,51 @@ import java.util.Date;
 @RequestMapping("/jpa-test")
 public class TestJpaController {
 
-    private static String applicationName;
     private final TestJpaService testJpaService;
 
-    public TestJpaController(TestJpaService testJpaService, Environment environment) {
+    public TestJpaController(TestJpaService testJpaService) {
         this.testJpaService = testJpaService;
-        applicationName = environment.getProperty("spring.application.name");
     }
 
     @GetMapping("")
     public Result<Collection<TestJpaEntity>> findAll() {
-        return ResultUtil.ok(this.testJpaService.findAll(), applicationName);
+        return ResultUtil.ok(this.testJpaService.findAll(), DemoApplication.APPLICATION_NAME);
     }
 
     @GetMapping("/id/{uuid}")
     public Result<TestJpaEntity> findById(@PathVariable("uuid") TestJpaEntity testJpaEntity) {
-        return ResultUtil.ok(testJpaEntity, applicationName);
+        return ResultUtil.ok(testJpaEntity, DemoApplication.APPLICATION_NAME);
     }
 
     @GetMapping("/date/{createDate}")
     public Result<Collection<TestJpaEntity>> findByCreateDate(
             @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate) {
-        return ResultUtil.ok(this.testJpaService.findByCreateDate(createDate), applicationName);
+        return ResultUtil.ok(this.testJpaService.findByCreateDate(createDate), DemoApplication.APPLICATION_NAME);
     }
 
     @PostMapping("/page")
     public Result<Page<TestJpaEntity>> pagingByCondition(TestJpaDto condition, Pageable pageable) {
-        return ResultUtil.ok(this.testJpaService.pagingByCondition(condition, pageable), applicationName);
+        return ResultUtil.ok(this.testJpaService.pagingByCondition(condition, pageable), DemoApplication.APPLICATION_NAME);
     }
 
     @PostMapping("/queries")
     public Result<Collection<TestJpaEntity>> findByCondition(@RequestBody TestJpaDto condition) {
-        return ResultUtil.ok(this.testJpaService.findByCondition(condition), applicationName);
+        return ResultUtil.ok(this.testJpaService.findByCondition(condition), DemoApplication.APPLICATION_NAME);
     }
 
     @PostMapping("")
     public Result<TestJpaEntity> createNew(@RequestBody TestJpaDto newTestJpaDto) {
-        return ResultUtil.ok(this.testJpaService.createNew(newTestJpaDto), applicationName);
+        return ResultUtil.ok(this.testJpaService.createNew(newTestJpaDto), DemoApplication.APPLICATION_NAME);
     }
 
     @DeleteMapping("/{uuid}")
     public Result<Boolean> deleteById(@PathVariable String uuid) {
         this.testJpaService.deleteById(uuid);
-        return ResultUtil.ok(applicationName);
+        return ResultUtil.ok(DemoApplication.APPLICATION_NAME);
     }
 
     @PutMapping("")
     public Result<TestJpaEntity> update(@RequestBody TestJpaDto newTestJpaDto) {
-        return ResultUtil.ok(this.testJpaService.update(newTestJpaDto), applicationName);
+        return ResultUtil.ok(this.testJpaService.update(newTestJpaDto), DemoApplication.APPLICATION_NAME);
     }
 }

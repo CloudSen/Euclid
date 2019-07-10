@@ -21,6 +21,9 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
 @EnableSpringDataWebSupport
 @SpringBootApplication
 public class DemoApplication {
+
+    public static final String APPLICATION_NAME = "demo-for-test";
+
     static {
         log.info("======> [ INFO ] Starting demo server...");
     }

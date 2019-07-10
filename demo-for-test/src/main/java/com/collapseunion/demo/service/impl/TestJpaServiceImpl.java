@@ -55,7 +55,11 @@ public class TestJpaServiceImpl implements TestJpaService {
     @Override
     public List<TestJpaEntity> findAll() {
         log.info(Constants.FINDING_ALL);
-        return this.testJpaRepository.findAll();
+        List<TestJpaEntity> data = this.testJpaRepository.findAll();
+        if (CollectionUtils.isEmpty(data) || data.size() == 3) {
+            throw new NullPointerException("null data");
+        }
+        return data;
     }
 
     @Override
