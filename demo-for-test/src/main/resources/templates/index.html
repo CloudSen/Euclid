@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="/jquery.js"></script>
+</head>
+<body>
+<div>You are accessing demo-for-test project.</div>
+<div><a href="#" onclick="logDemoForTest()">点我测试ZUUL</a></div>
+<div id="data"></div>
+</body>
+<script>
+    function logDemoForTest() {
+        console.log("正在访问demo...");
+        $.ajax({
+            url: 'http://localhost:8222/api/demo-for-test/jpa-test',
+            method: 'GET',
+            dataType: 'json',
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader("Authorization", "Basic " + btoa("zuul:zuul"));
+            },
+            success: (result) => {
+                if (result.success) {
+                    let $data = $("#data");
+                    console.log(JSON.stringify(result.data));
+                    $data.empty();
+                    $data.append(JSON.stringify(result.data));
+                } else {
+                    console.log(`failed to access demo-for-test service, ${result.message}`);
+                }
+            }
+        })
+    }
+</script>
+</html>
