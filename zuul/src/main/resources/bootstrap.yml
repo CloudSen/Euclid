@@ -5,6 +5,11 @@ spring:
     name: zuul-api-gateway
   profiles:
     active: dev
+  security:
+    user:
+      name: zuul
+      password: zuul
+      roles: USER
 ---
 server:
   port: 8222
