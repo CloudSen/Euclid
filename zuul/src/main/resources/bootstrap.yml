@@ -1,0 +1,47 @@
+server:
+  port: 8222
+spring:
+  application:
+    name: zuul-api-gateway
+  profiles:
+    active: dev
+---
+server:
+  port: 8222
+spring:
+  profiles: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: Euclid-Cloud-Config
+      label: master
+      profile: dev
+      fail-fast: true
+eureka:
+  instance:
+    instance-id: zuul-api-gateway-dev
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
+---
+server:
+  port: 8223
+spring:
+  profiles: dev2
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: Euclid-Cloud-Config
+      label: master
+      profile: dev2
+      fail-fast: true
+eureka:
+  instance:
+    instance-id: zuul-api-gateway-dev2
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost1:8777/eureka/,http://localhost2:8666/eureka/
